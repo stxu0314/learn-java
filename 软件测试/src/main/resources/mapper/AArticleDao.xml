@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace=".dao.AArticleDao">
+
+    <resultMap type=".entity.AArticle" id="AArticleMap">
+        <result property="articleId" column="article_id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="author" column="author" jdbcType="VARCHAR"/>
+        <result property="publishedTime" column="published_time" jdbcType="TIMESTAMP"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="img" column="img" jdbcType="VARCHAR"/>
+        <result property="collection" column="collection" jdbcType="INTEGER"/>
+        <result property="share" column="share" jdbcType="INTEGER"/>
+        <result property="comment" column="comment" jdbcType="INTEGER"/>
+        <result property="star" column="star" jdbcType="INTEGER"/>
+        <result property="pageView" column="page_view" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="AArticleMap">
+        select
+          article_id, title, author, published_time, content, img, collection, share, comment, star, page_view
+        from a_article
+        where article_id = #{articleId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="AArticleMap">
+        select
+          article_id, title, author, published_time, content, img, collection, share, comment, star, page_view
+        from a_article
+        <where>
+            <if test="articleId != null">
+                and article_id = #{articleId}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="author != null and author != ''">
+                and author = #{author}
+            </if>
+            <if test="publishedTime != null">
+                and published_time = #{publishedTime}
+            </if>
+            <if test="content != null and content != ''">
+                and content = #{content}
+            </if>
+            <if test="img != null and img != ''">
+                and img = #{img}
+            </if>
+            <if test="collection != null">
+                and collection = #{collection}
+            </if>
+            <if test="share != null">
+                and share = #{share}
+            </if>
+            <if test="comment != null">
+                and comment = #{comment}
+            </if>
+            <if test="star != null">
+                and star = #{star}
+            </if>
+            <if test="pageView != null">
+                and page_view = #{pageView}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from a_article
+        <where>
+            <if test="articleId != null">
+                and article_id = #{articleId}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="author != null and author != ''">
+                and author = #{author}
+            </if>
+            <if test="publishedTime != null">
+                and published_time = #{publishedTime}
+            </if>
+            <if test="content != null and content != ''">
+                and content = #{content}
+            </if>
+            <if test="img != null and img != ''">
+                and img = #{img}
+            </if>
+            <if test="collection != null">
+                and collection = #{collection}
+            </if>
+            <if test="share != null">
+                and share = #{share}
+            </if>
+            <if test="comment != null">
+                and comment = #{comment}
+            </if>
+            <if test="star != null">
+                and star = #{star}
+            </if>
+            <if test="pageView != null">
+                and page_view = #{pageView}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="articleId" useGeneratedKeys="true">
+        insert into a_article(title, author, published_time, content, img, collection, share, comment, star, page_view)
+        values (#{title}, #{author}, #{publishedTime}, #{content}, #{img}, #{collection}, #{share}, #{comment}, #{star}, #{pageView})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="articleId" useGeneratedKeys="true">
+        insert into a_article(title, author, published_time, content, img, collection, share, comment, star, page_view)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.title}, #{entity.author}, #{entity.publishedTime}, #{entity.content}, #{entity.img}, #{entity.collection}, #{entity.share}, #{entity.comment}, #{entity.star}, #{entity.pageView})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="articleId" useGeneratedKeys="true">
+        insert into a_article(title, author, published_time, content, img, collection, share, comment, star, page_view)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.title}, #{entity.author}, #{entity.publishedTime}, #{entity.content}, #{entity.img}, #{entity.collection}, #{entity.share}, #{entity.comment}, #{entity.star}, #{entity.pageView})
+        </foreach>
+        on duplicate key update
+        title = values(title),
+        author = values(author),
+        published_time = values(published_time),
+        content = values(content),
+        img = values(img),
+        collection = values(collection),
+        share = values(share),
+        comment = values(comment),
+        star = values(star),
+        page_view = values(page_view)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update a_article
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="author != null and author != ''">
+                author = #{author},
+            </if>
+            <if test="publishedTime != null">
+                published_time = #{publishedTime},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="img != null and img != ''">
+                img = #{img},
+            </if>
+            <if test="collection != null">
+                collection = #{collection},
+            </if>
+            <if test="share != null">
+                share = #{share},
+            </if>
+            <if test="comment != null">
+                comment = #{comment},
+            </if>
+            <if test="star != null">
+                star = #{star},
+            </if>
+            <if test="pageView != null">
+                page_view = #{pageView},
+            </if>
+        </set>
+        where article_id = #{articleId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from a_article where article_id = #{articleId}
+    </delete>
+
+</mapper>
+

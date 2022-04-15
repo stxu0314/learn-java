@@ -2,9 +2,7 @@ package com.grmz.map;
 
 import org.junit.Test;
 
-import javax.swing.*;
 import java.util.*;
-import java.util.stream.Stream;
 
 /**
  * 一.Map实现类结构:
@@ -85,6 +83,7 @@ import java.util.stream.Stream;
  * 长度:size()
  * 遍历:keySet()  / values() /entrySet()
  *
+ * @author STXU
  */
  public class MapTest implements Comparable{
 
@@ -138,7 +137,7 @@ import java.util.stream.Stream;
 
     @Test
     public void test3(){
-        Map map1 = new LinkedHashMap();
+        Map<Integer,String> map1 = new LinkedHashMap();
         map1.put(123,"AA");
         map1.put(23,"BB");
         map1.put(565,"CC");
@@ -240,8 +239,6 @@ import java.util.stream.Stream;
 
 
 class User{
-     //uuzi
-     private int nim;
 
 
     private int age;
@@ -249,7 +246,7 @@ public void test1(){
 
 }
 
-    public User(int age, String name) {
+   User(int age, String name) {
         this.age = age;
         this.name = name;
     }
