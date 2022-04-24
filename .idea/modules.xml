@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IO流/IO流.iml" filepath="$PROJECT_DIR$/IO流/IO流.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java8新特性/java8新特性.iml" filepath="$PROJECT_DIR$/java8新特性/java8新特性.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-java.iml" filepath="$PROJECT_DIR$/learn-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/反射/反射.iml" filepath="$PROJECT_DIR$/反射/反射.iml" />
+      <module fileurl="file://$PROJECT_DIR$/数据结构与算法/数据结构与算法.iml" filepath="$PROJECT_DIR$/数据结构与算法/数据结构与算法.iml" />
       <module fileurl="file://$PROJECT_DIR$/泛型/泛型.iml" filepath="$PROJECT_DIR$/泛型/泛型.iml" />
       <module fileurl="file://$PROJECT_DIR$/网络编程/网络编程.iml" filepath="$PROJECT_DIR$/网络编程/网络编程.iml" />
       <module fileurl="file://$PROJECT_DIR$/软件测试/软件测试.iml" filepath="$PROJECT_DIR$/软件测试/软件测试.iml" />
