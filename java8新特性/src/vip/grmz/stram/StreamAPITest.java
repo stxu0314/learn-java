@@ -1,5 +1,6 @@
 package vip.grmz.stram;
 
+<<<<<<< HEAD
 import org.junit.Test;
 import vip.grmz.lambda2.Employee;
 import vip.grmz.lambda2.EmployeeData;
@@ -9,6 +10,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+=======
+>>>>>>> 59d87a7564d4af65dd38951f736af49da2159ca9
 /**
  * 1. Stream关注的是对数据的运算,与cpu打交道
  *    集合关注的是数据的存储, 与内存的交道
@@ -30,6 +33,7 @@ import java.util.stream.Stream;
  * @Version 1.0
  */
 public class StreamAPITest {
+<<<<<<< HEAD
     //创建Stream的方式一:通过集合
     @Test
     public void test1(){
@@ -75,5 +79,7 @@ public class StreamAPITest {
         Stream.generate(Math :: random).limit(10).forEach(System.out :: println);
 
     }
+=======
+>>>>>>> 59d87a7564d4af65dd38951f736af49da2159ca9
 
 }
